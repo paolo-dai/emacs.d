@@ -13,4 +13,21 @@
 
 (add-hook 'after-make-console-frame-hooks 'sanityinc/console-frame-setup)
 
+;;----------------------------------------------------------------------------
+;; disable-touchpad
+;;----------------------------------------------------------------------------
+(defun disable-touchpad (&optional frame)
+  "disable touchpad."
+  (interactive)
+  (shell-command "xinput --disable \"SynPS/2 Synaptics TouchPad\""))
+
+(defun enable-touchpad (&optional frame)
+  "enable touchpad."
+  (interactive)
+  (shell-command "xinput --enable \"SynPS/2 Synaptics TouchPad\""))
+
+(add-hook 'focus-in-hook #'disable-touchpad)
+(add-hook 'focus-out-hook #'enable-touchpad)
+(add-hook 'delete-frame-functions #'enable-touchpad)
+
 (provide 'init-xterm)
