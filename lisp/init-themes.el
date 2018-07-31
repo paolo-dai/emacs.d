@@ -1,8 +1,9 @@
 (require-package 'color-theme-sanityinc-solarized)
 (require-package 'color-theme-sanityinc-tomorrow)
-
+(require-package 'material-theme)
 ;; If you don't customize it, this is the theme you get.
-(setq-default custom-enabled-themes '(sanityinc-tomorrow-bright))
+;;(setq-default custom-enabled-themes '(sanityinc-tomorrow-bright))
+(setq-default custom-enabled-themes '(material))
 
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
@@ -30,10 +31,20 @@
   (setq custom-enabled-themes '(sanityinc-tomorrow-bright))
   (reapply-themes))
 
+(defun material-light ()
+  "Activate a light color theme."
+  (interactive)
+  (setq custom-enabled-themes '(material-light))
+  (reapply-themes))
 
-(when (maybe-require-package 'dimmer)
-  (setq-default dimmer-fraction 0.15)
-  (add-hook 'after-init-hook 'dimmer-mode))
+(defun material-dark ()
+  "Activate a dark color theme."
+  (interactive)
+  (setq custom-enabled-themes '(material))
+  (reapply-themes))
 
+;; (when (maybe-require-package 'dimmer)
+;;   (setq-default dimmer-fraction 0.15)
+;;   (add-hook 'after-init-hook 'dimmer-mode))
 
 (provide 'init-themes)
