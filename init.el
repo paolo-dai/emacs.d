@@ -108,6 +108,7 @@
 (require 'init-yaml)
 (require 'init-docker)
 (require 'init-terraform)
+(require 'init-ggtags)
 ;;(require 'init-nix)
 (maybe-require-package 'nginx-mode)
 
